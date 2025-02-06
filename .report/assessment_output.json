@@ -1,0 +1,1279 @@
+{
+    "meta": {
+        "version": "3.2.1",
+        "report_json_url": "https://raw.githubusercontent.com/eosc-synergy/FDP-Index-Proxy.git.assess.sqaaas/master/.report/assessment_output.json"
+    },
+    "repository": [
+        {
+            "url": "https://github.com/OSTrails/FDP-Index-Proxy.git",
+            "name": "OSTrails/FDP-Index-Proxy",
+            "tag": "master",
+            "commit_id": "2374ac680218a717a91d3fe597f5579e5e7945f1",
+            "is_main_repo": true,
+            "avatar_url": "https://avatars.githubusercontent.com/u/162346243?v=4",
+            "description": null,
+            "languages": null,
+            "topics": null,
+            "stargazers_count": null,
+            "watchers_count": null,
+            "contributors_count": null,
+            "forks_count": null,
+            "badge_status": "no_badge"
+        }
+    ],
+    "report": {
+        "QC.Acc": {
+            "valid": true,
+            "subcriteria": {
+                "QC.Acc01": {
+                    "description": "Is the source code managed with a Version Control System?",
+                    "requirement_level": "MUST",
+                    "hint": "The source code shall be managed with Git and remain publicly available for this criterion to be successful. Please check <a href=\"https://git-scm.com/book/es/v2\" target=\"_blank\">Pro Git</a> docs about how to get started using Git tool. Guidelines provided by the most popular social coding platforms (<a href=\"https://docs.github.com/get-started\" target=\"_blank\">GitHub</a>, <a href=\"https://about.gitlab.com/get-started/\" target=\"_blank\">GitLab</a>) are also a good starting point",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "Source code uses Git for version control",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-boolean",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "git",
+                                "lang": "scm",
+                                "version": "2.34.1",
+                                "docker": {
+                                    "image": "bitnami/git:2.34.1",
+                                    "reviewed": "2021-12-30"
+                                },
+                                "ci": {
+                                    "name": "QC.Acc github.com/OSTrails/FDP-Index-Proxy git",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "git rev-parse --is-inside-work-tree "
+                                    ],
+                                    "stdout_text": "true",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/FDP-Index-Proxy.git.assess.sqaaas/job/master/1/execution/node/34/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/FDP-Index-Proxy.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": true
+                }
+            },
+            "coverage": {
+                "percentage": 100,
+                "total_subcriteria": 1,
+                "success_subcriteria": 1
+            }
+        },
+        "QC.Doc": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Doc06.1": {
+                    "description": "Is the software scope outlined in the code repository?",
+                    "requirement_level": "MUST",
+                    "hint": "A README file presents your software to the audience interested in your software project. Several online sites simplify the task of creating the README file, such as <a href=\"https://www.makeareadme.com/\" target=\"_blank\">Make a README</a> or <a href=\"https://readme.so/\" target=\"_blank\">readme.so</a> sites. Be sure to add it to the code repository's root path",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "A README file is present in the code repository",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-find_doc_files",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "find_doc_files.py",
+                                "lang": "Contribution-enabling Files",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/Dockerfile",
+                                    "reviewed": "2022-01-26"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc github.com/OSTrails/FDP-Index-Proxy find_doc_files.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "find_doc_files.py --file_type all"
+                                    ],
+                                    "stdout_text": "{\"README\": [{\"file_name\": \"README.md\", \"size\": 92}], \"CODE_OF_CONDUCT\": [], \"CONTRIBUTING\": []}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/FDP-Index-Proxy.git.assess.sqaaas/job/master/1/execution/node/43/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/FDP-Index-Proxy.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "README": [
+                                    {
+                                        "file_name": "README.md",
+                                        "size": 92
+                                    }
+                                ],
+                                "CODE_OF_CONDUCT": [],
+                                "CONTRIBUTING": []
+                            }
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Doc06.3": {
+                    "description": "Does the project establish a code of conduct for its participants?",
+                    "requirement_level": "MUST",
+                    "hint": "A CODE_OF_CONDUCT file sets the path for a constructive, respectful and positive atmosphere among all the contributors in your software project. Of course you can define your own, but in case you want to rely on external and widely-adopted code of conducts check out some of the most popular ones: <a href=\"https://contributor-covenant.org/\" target=\"_blank\">Contributor Covenant</a> or <a href=\"https://web.archive.org/web/20200330154000/http://citizencodeofconduct.org/\" target=\"_blank\">Citizen Code of Conduct</a>",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "A CODE_OF_CONDUCT file is not present in the code repository",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-find_doc_files",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "find_doc_files.py",
+                                "lang": "Contribution-enabling Files",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/Dockerfile",
+                                    "reviewed": "2022-01-26"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc github.com/OSTrails/FDP-Index-Proxy find_doc_files.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "find_doc_files.py --file_type all"
+                                    ],
+                                    "stdout_text": "{\"README\": [{\"file_name\": \"README.md\", \"size\": 92}], \"CODE_OF_CONDUCT\": [], \"CONTRIBUTING\": []}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/FDP-Index-Proxy.git.assess.sqaaas/job/master/1/execution/node/43/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/FDP-Index-Proxy.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "README": [
+                                    {
+                                        "file_name": "README.md",
+                                        "size": 92
+                                    }
+                                ],
+                                "CODE_OF_CONDUCT": [],
+                                "CONTRIBUTING": []
+                            }
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": true
+                },
+                "QC.Doc06.2": {
+                    "description": "Is there a clear path or guidelines on how to contribute to the code?",
+                    "requirement_level": "MUST",
+                    "hint": "A CONTRIBUTING file shall be present in the root path of the code repository describing the expected workflow to follow when adding contributions. Please check <a href=\"https://mozillascience.github.io/working-open-workshop/contributing/\" target=\"_blank\">Mozilla's guidelines</a> and <a href=\"https://github.com/github/docs/blob/main/CONTRIBUTING.md\" target=\"_blank\">GitHub's CONTRIBUTING.md example</a> to get inspired on how to write a good CONTRIBUTING file",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "A CONTRIBUTING file is not present in the code repository",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-find_doc_files",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "find_doc_files.py",
+                                "lang": "Contribution-enabling Files",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/Dockerfile",
+                                    "reviewed": "2022-01-26"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc github.com/OSTrails/FDP-Index-Proxy find_doc_files.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "find_doc_files.py --file_type all"
+                                    ],
+                                    "stdout_text": "{\"README\": [{\"file_name\": \"README.md\", \"size\": 92}], \"CODE_OF_CONDUCT\": [], \"CONTRIBUTING\": []}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/FDP-Index-Proxy.git.assess.sqaaas/job/master/1/execution/node/43/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/FDP-Index-Proxy.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "README": [
+                                    {
+                                        "file_name": "README.md",
+                                        "size": 92
+                                    }
+                                ],
+                                "CODE_OF_CONDUCT": [],
+                                "CONTRIBUTING": []
+                            }
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": true
+                },
+                "QC.Doc01.1": {
+                    "description": "Are docs managed in the same repository as code?",
+                    "requirement_level": "MAY",
+                    "hint": "This subcriterion will succeed if the documentation files exist on the same repository as the source code, e.g. under a <code>docs/</code> folder",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "Documentation resides in the same repository as code",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-boolean",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "git",
+                                "lang": null,
+                                "version": null,
+                                "docker": null,
+                                "ci": {
+                                    "name": "QC.Doc github.com/OSTrails/FDP-Index-Proxy git",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "git rev-parse --is-inside-work-tree "
+                                    ],
+                                    "stdout_text": "true",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/FDP-Index-Proxy.git.assess.sqaaas/job/master/1/execution/node/52/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/FDP-Index-Proxy.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Doc02.X": {
+                    "description": "Are docs following a style for the Markdown markup language?",
+                    "requirement_level": "MAY",
+                    "hint": "When using a docs-as-code approach, the style of the markup language is being checked. SQAaaS relies on <a href=\"https://github.com/markdownlint/markdownlint/\" target=\"_blank\">markdownlint</a> for Markdown files and <a href=\"https://github.com/twolfson/restructuredtext-lint/\" target=\"_blank\">restructuredtext-lint</a> for reStructuredText",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "Docs are not fully compliant with markdownlint standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-markdownlint",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "markdownlint",
+                                "lang": "Markdown",
+                                "version": "0.11.0",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/markdownlint/Dockerfile",
+                                    "reviewed": "1970-01-01"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc github.com/OSTrails/FDP-Index-Proxy markdownlint",
+                                    "status": "FAILED",
+                                    "stdout_command": [
+                                        "mdl --json  ."
+                                    ],
+                                    "stdout_text": "[{\"filename\":\"./README.md\",\"line\":1,\"rule\":\"MD022\",\"aliases\":[\"blanks-around-headers\"],\"description\":\"Headers should be surrounded by blank lines\"},{\"filename\":\"./fdp_index_proxy/README.md\",\"line\":5,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./fdp_index_proxy/README.md\",\"line\":9,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./fdp_index_proxy/README.md\",\"line\":25,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./fdp_index_proxy/README.md\",\"line\":27,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./fdp_index_proxy/README.md\",\"line\":13,\"rule\":\"MD014\",\"aliases\":[\"commands-show-output\"],\"description\":\"Dollar signs used before commands without showing output\"},{\"filename\":\"./fdp_index_proxy/README.md\",\"line\":17,\"rule\":\"MD014\",\"aliases\":[\"commands-show-output\"],\"description\":\"Dollar signs used before commands without showing output\"},{\"filename\":\"./fdp_index_proxy/README.md\",\"line\":31,\"rule\":\"MD034\",\"aliases\":[\"no-bare-urls\"],\"description\":\"Bare URL used\"},{\"filename\":\"./fdp_index_proxy/README.md\",\"line\":13,\"rule\":\"MD046\",\"aliases\":[\"code-block-style\"],\"description\":\"Code block style\"},{\"filename\":\"./fdp_index_proxy/README.md\",\"line\":17,\"rule\":\"MD046\",\"aliases\":[\"code-block-style\"],\"description\":\"Code block style\"}]",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/FDP-Index-Proxy.git.assess.sqaaas/job/master/1/execution/node/61/log?consoleFull"
+                                },
+                                "level": "RECOMMENDED",
+                                "build_repo": "https://github.com/eosc-synergy/FDP-Index-Proxy.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "./README.md": {
+                                    "MD022": {
+                                        "description": "Headers should be surrounded by blank lines",
+                                        "line": [
+                                            1
+                                        ]
+                                    }
+                                },
+                                "./fdp_index_proxy/README.md": {
+                                    "MD013": {
+                                        "description": "Line length",
+                                        "line": [
+                                            5,
+                                            9,
+                                            25,
+                                            27
+                                        ]
+                                    },
+                                    "MD014": {
+                                        "description": "Dollar signs used before commands without showing output",
+                                        "line": [
+                                            13,
+                                            17
+                                        ]
+                                    },
+                                    "MD034": {
+                                        "description": "Bare URL used",
+                                        "line": [
+                                            31
+                                        ]
+                                    },
+                                    "MD046": {
+                                        "description": "Code block style",
+                                        "line": [
+                                            13,
+                                            17
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 40,
+                "total_subcriteria": 5,
+                "success_subcriteria": 2
+            }
+        },
+        "QC.Lic": {
+            "valid": true,
+            "subcriteria": {
+                "QC.Lic01": {
+                    "description": "Is code licensed to be freely used, modified and distributed by others?",
+                    "requirement_level": "MUST",
+                    "hint": "<p>Your source code repository shall be distributed under an open source license for this subcriterion to pass successfully. Be sure to have a license file present in the code repository matching the name <code>LICENSE</code> with optional extensions (depending on the format used): <code>[.md|.rst|.txt]</code>.</p><p>Valid licenses are any of those approved either by the <a href=\"https://opensource.org/licenses\" target=\"_blank\">Open Source Initiative</a> and/or the Free Software Foundation <a href=\"https://www.gnu.org/licenses/license-list.html\" target=\"_blank\"></a>. You can also check the <a href=\"https://choosealicense.com/\" target=\"_blank\">choosealicense.com</a> site</p>",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "An Open Source license found in the code repository: MIT",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-licensee",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "licensee",
+                                "lang": "license",
+                                "version": "9.17.0",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-licensee:9.17.0",
+                                    "reviewed": "2021-06-28"
+                                },
+                                "ci": {
+                                    "name": "QC.Lic github.com/OSTrails/FDP-Index-Proxy licensee",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "licensee detect . --confidence 60 --json "
+                                    ],
+                                    "stdout_text": "{\"licenses\":[{\"key\":\"mit\",\"spdx_id\":\"MIT\",\"meta\":{\"title\":\"MIT License\",\"source\":\"https://spdx.org/licenses/MIT.html\",\"description\":\"A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Babel\":\"https://github.com/babel/babel/blob/master/LICENSE\",\".NET\":\"https://github.com/dotnet/runtime/blob/main/LICENSE.TXT\",\"Rails\":\"https://github.com/rails/rails/blob/master/MIT-LICENSE\"},\"featured\":true,\"hidden\":false,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/mit/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"LICENSE\",\"content\":\"MIT License\\n\\nCopyright (c) 2024 Mark Wilkinson\\n\\nPermission is hereby granted, free of charge, to any person obtaining a copy\\nof this software and associated documentation files (the \\\"Software\\\"), to deal\\nin the Software without restriction, including without limitation the rights\\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\\ncopies of the Software, and to permit persons to whom the Software is\\nfurnished to do so, subject to the following conditions:\\n\\nThe above copyright notice and this permission notice shall be included in all\\ncopies or substantial portions of the Software.\\n\\nTHE SOFTWARE IS PROVIDED \\\"AS IS\\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\\nSOFTWARE.\\n\",\"content_hash\":\"4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9\",\"content_normalized\":\"permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.\",\"matcher\":{\"name\":\"exact\",\"confidence\":100},\"matched_license\":\"MIT\",\"attribution\":\"Copyright (c) 2024 Mark Wilkinson\"}]}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/FDP-Index-Proxy.git.assess.sqaaas/job/master/1/execution/node/70/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/FDP-Index-Proxy.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "licenses": [
+                                    {
+                                        "key": "mit",
+                                        "spdx_id": "MIT",
+                                        "meta": {
+                                            "title": "MIT License",
+                                            "source": "https://spdx.org/licenses/MIT.html",
+                                            "description": "A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "Babel": "https://github.com/babel/babel/blob/master/LICENSE",
+                                                ".NET": "https://github.com/dotnet/runtime/blob/main/LICENSE.TXT",
+                                                "Rails": "https://github.com/rails/rails/blob/master/MIT-LICENSE"
+                                            },
+                                            "featured": true,
+                                            "hidden": false,
+                                            "nickname": null,
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/mit/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    }
+                                ],
+                                "matched_files": [
+                                    {
+                                        "filename": "LICENSE",
+                                        "content": "MIT License\n\nCopyright (c) 2024 Mark Wilkinson\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+                                        "content_hash": "4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9",
+                                        "content_normalized": "permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.",
+                                        "matcher": {
+                                            "name": "exact",
+                                            "confidence": 100
+                                        },
+                                        "matched_license": "MIT",
+                                        "attribution": "Copyright (c) 2024 Mark Wilkinson"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Lic01.1": {
+                    "description": "Is LICENSE file placed in the root path of the code repository?",
+                    "requirement_level": "MUST",
+                    "hint": "Most social coding platforms require the license file to placed in the root path of the code repository, so it is a good practice to use this location by default. Allowed file names are <code>LICENSE</code>, <code>LICENSE.md</code>, <code>LICENSE.rst</code>, <code>LICENSE.txt</code>",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "LICENSE file is visible at the root path of the code repository: LICENSE",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-licensee",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "licensee",
+                                "lang": "license",
+                                "version": "9.17.0",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-licensee:9.17.0",
+                                    "reviewed": "2021-06-28"
+                                },
+                                "ci": {
+                                    "name": "QC.Lic github.com/OSTrails/FDP-Index-Proxy licensee",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "licensee detect . --confidence 60 --json "
+                                    ],
+                                    "stdout_text": "{\"licenses\":[{\"key\":\"mit\",\"spdx_id\":\"MIT\",\"meta\":{\"title\":\"MIT License\",\"source\":\"https://spdx.org/licenses/MIT.html\",\"description\":\"A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Babel\":\"https://github.com/babel/babel/blob/master/LICENSE\",\".NET\":\"https://github.com/dotnet/runtime/blob/main/LICENSE.TXT\",\"Rails\":\"https://github.com/rails/rails/blob/master/MIT-LICENSE\"},\"featured\":true,\"hidden\":false,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/mit/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"LICENSE\",\"content\":\"MIT License\\n\\nCopyright (c) 2024 Mark Wilkinson\\n\\nPermission is hereby granted, free of charge, to any person obtaining a copy\\nof this software and associated documentation files (the \\\"Software\\\"), to deal\\nin the Software without restriction, including without limitation the rights\\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\\ncopies of the Software, and to permit persons to whom the Software is\\nfurnished to do so, subject to the following conditions:\\n\\nThe above copyright notice and this permission notice shall be included in all\\ncopies or substantial portions of the Software.\\n\\nTHE SOFTWARE IS PROVIDED \\\"AS IS\\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\\nSOFTWARE.\\n\",\"content_hash\":\"4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9\",\"content_normalized\":\"permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.\",\"matcher\":{\"name\":\"exact\",\"confidence\":100},\"matched_license\":\"MIT\",\"attribution\":\"Copyright (c) 2024 Mark Wilkinson\"}]}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/FDP-Index-Proxy.git.assess.sqaaas/job/master/1/execution/node/70/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/FDP-Index-Proxy.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "licenses": [
+                                    {
+                                        "key": "mit",
+                                        "spdx_id": "MIT",
+                                        "meta": {
+                                            "title": "MIT License",
+                                            "source": "https://spdx.org/licenses/MIT.html",
+                                            "description": "A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "Babel": "https://github.com/babel/babel/blob/master/LICENSE",
+                                                ".NET": "https://github.com/dotnet/runtime/blob/main/LICENSE.TXT",
+                                                "Rails": "https://github.com/rails/rails/blob/master/MIT-LICENSE"
+                                            },
+                                            "featured": true,
+                                            "hidden": false,
+                                            "nickname": null,
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/mit/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    }
+                                ],
+                                "matched_files": [
+                                    {
+                                        "filename": "LICENSE",
+                                        "content": "MIT License\n\nCopyright (c) 2024 Mark Wilkinson\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+                                        "content_hash": "4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9",
+                                        "content_normalized": "permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.",
+                                        "matcher": {
+                                            "name": "exact",
+                                            "confidence": 100
+                                        },
+                                        "matched_license": "MIT",
+                                        "attribution": "Copyright (c) 2024 Mark Wilkinson"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Lic02": {
+                    "description": "Does the code use a license approved by Open Source Initiative?",
+                    "requirement_level": "MUST",
+                    "hint": "The <a href=\"https://opensource.org/\" target=\"_blank\">Open Source Initiative (OSI)</a> sets out the requirements for software to be legally declared as Open Source. The license in use shall be in the list of <a href=\"https://opensource.org/license-list.html\" target=\"_blank\">OSI-approved licenses</a> for this criterion to be successful",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "License MIT is approved by the Open Source Initiative",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-licensee",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "licensee",
+                                "lang": "license",
+                                "version": "9.17.0",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-licensee:9.17.0",
+                                    "reviewed": "2021-06-28"
+                                },
+                                "ci": {
+                                    "name": "QC.Lic github.com/OSTrails/FDP-Index-Proxy licensee",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "licensee detect . --confidence 60 --json "
+                                    ],
+                                    "stdout_text": "{\"licenses\":[{\"key\":\"mit\",\"spdx_id\":\"MIT\",\"meta\":{\"title\":\"MIT License\",\"source\":\"https://spdx.org/licenses/MIT.html\",\"description\":\"A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Babel\":\"https://github.com/babel/babel/blob/master/LICENSE\",\".NET\":\"https://github.com/dotnet/runtime/blob/main/LICENSE.TXT\",\"Rails\":\"https://github.com/rails/rails/blob/master/MIT-LICENSE\"},\"featured\":true,\"hidden\":false,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/mit/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"LICENSE\",\"content\":\"MIT License\\n\\nCopyright (c) 2024 Mark Wilkinson\\n\\nPermission is hereby granted, free of charge, to any person obtaining a copy\\nof this software and associated documentation files (the \\\"Software\\\"), to deal\\nin the Software without restriction, including without limitation the rights\\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\\ncopies of the Software, and to permit persons to whom the Software is\\nfurnished to do so, subject to the following conditions:\\n\\nThe above copyright notice and this permission notice shall be included in all\\ncopies or substantial portions of the Software.\\n\\nTHE SOFTWARE IS PROVIDED \\\"AS IS\\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\\nSOFTWARE.\\n\",\"content_hash\":\"4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9\",\"content_normalized\":\"permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.\",\"matcher\":{\"name\":\"exact\",\"confidence\":100},\"matched_license\":\"MIT\",\"attribution\":\"Copyright (c) 2024 Mark Wilkinson\"}]}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/FDP-Index-Proxy.git.assess.sqaaas/job/master/1/execution/node/70/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/FDP-Index-Proxy.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "licenses": [
+                                    {
+                                        "key": "mit",
+                                        "spdx_id": "MIT",
+                                        "meta": {
+                                            "title": "MIT License",
+                                            "source": "https://spdx.org/licenses/MIT.html",
+                                            "description": "A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "Babel": "https://github.com/babel/babel/blob/master/LICENSE",
+                                                ".NET": "https://github.com/dotnet/runtime/blob/main/LICENSE.TXT",
+                                                "Rails": "https://github.com/rails/rails/blob/master/MIT-LICENSE"
+                                            },
+                                            "featured": true,
+                                            "hidden": false,
+                                            "nickname": null,
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/mit/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    }
+                                ],
+                                "matched_files": [
+                                    {
+                                        "filename": "LICENSE",
+                                        "content": "MIT License\n\nCopyright (c) 2024 Mark Wilkinson\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+                                        "content_hash": "4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9",
+                                        "content_normalized": "permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.",
+                                        "matcher": {
+                                            "name": "exact",
+                                            "confidence": 100
+                                        },
+                                        "matched_license": "MIT",
+                                        "attribution": "Copyright (c) 2024 Mark Wilkinson"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Lic02.1": {
+                    "description": "Does the code use an Open Source Initiative's popular-recognized license?",
+                    "requirement_level": "MAY",
+                    "hint": "The Open Source Initiative (OSI) sets out the requirements for software to be legally declared as Open Source. OSI provides a list of popular licenses that shall match most of the demands. The license in use shall be in the list of <a href=\"https://opensource.org/license-list.html\" target=\"_blank\">OSI popular licenses</a> for this criterion to be successful",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "License MIT is listed under the Open Source Initiative popular category",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-licensee",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "licensee",
+                                "lang": "license",
+                                "version": "9.17.0",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-licensee:9.17.0",
+                                    "reviewed": "2021-06-28"
+                                },
+                                "ci": {
+                                    "name": "QC.Lic github.com/OSTrails/FDP-Index-Proxy licensee",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "licensee detect . --confidence 60 --json "
+                                    ],
+                                    "stdout_text": "{\"licenses\":[{\"key\":\"mit\",\"spdx_id\":\"MIT\",\"meta\":{\"title\":\"MIT License\",\"source\":\"https://spdx.org/licenses/MIT.html\",\"description\":\"A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Babel\":\"https://github.com/babel/babel/blob/master/LICENSE\",\".NET\":\"https://github.com/dotnet/runtime/blob/main/LICENSE.TXT\",\"Rails\":\"https://github.com/rails/rails/blob/master/MIT-LICENSE\"},\"featured\":true,\"hidden\":false,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/mit/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"LICENSE\",\"content\":\"MIT License\\n\\nCopyright (c) 2024 Mark Wilkinson\\n\\nPermission is hereby granted, free of charge, to any person obtaining a copy\\nof this software and associated documentation files (the \\\"Software\\\"), to deal\\nin the Software without restriction, including without limitation the rights\\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\\ncopies of the Software, and to permit persons to whom the Software is\\nfurnished to do so, subject to the following conditions:\\n\\nThe above copyright notice and this permission notice shall be included in all\\ncopies or substantial portions of the Software.\\n\\nTHE SOFTWARE IS PROVIDED \\\"AS IS\\\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\\nSOFTWARE.\\n\",\"content_hash\":\"4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9\",\"content_normalized\":\"permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.\",\"matcher\":{\"name\":\"exact\",\"confidence\":100},\"matched_license\":\"MIT\",\"attribution\":\"Copyright (c) 2024 Mark Wilkinson\"}]}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/FDP-Index-Proxy.git.assess.sqaaas/job/master/1/execution/node/70/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/FDP-Index-Proxy.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "licenses": [
+                                    {
+                                        "key": "mit",
+                                        "spdx_id": "MIT",
+                                        "meta": {
+                                            "title": "MIT License",
+                                            "source": "https://spdx.org/licenses/MIT.html",
+                                            "description": "A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "Babel": "https://github.com/babel/babel/blob/master/LICENSE",
+                                                ".NET": "https://github.com/dotnet/runtime/blob/main/LICENSE.TXT",
+                                                "Rails": "https://github.com/rails/rails/blob/master/MIT-LICENSE"
+                                            },
+                                            "featured": true,
+                                            "hidden": false,
+                                            "nickname": null,
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/mit/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    }
+                                ],
+                                "matched_files": [
+                                    {
+                                        "filename": "LICENSE",
+                                        "content": "MIT License\n\nCopyright (c) 2024 Mark Wilkinson\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+                                        "content_hash": "4c2c763d64bbc7ef2e58b0ec6d06d90cee9755c9",
+                                        "content_normalized": "permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'software'), to deal in the software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, and to permit persons to whom the software is furnished to do so, subject to the following conditions: the above copyright notice and this permission notice shall be included in all copies or substantial portions of the software. the software is provided 'as is', without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.",
+                                        "matcher": {
+                                            "name": "exact",
+                                            "confidence": 100
+                                        },
+                                        "matched_license": "MIT",
+                                        "attribution": "Copyright (c) 2024 Mark Wilkinson"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "valid": true
+                }
+            },
+            "coverage": {
+                "percentage": 100,
+                "total_subcriteria": 4,
+                "success_subcriteria": 4
+            }
+        },
+        "QC.Sty": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Sty01": {
+                    "description": "Is the software product following a style standard for Dockerfile files?",
+                    "requirement_level": "MUST",
+                    "hint": "Please check & solve the security weaknesses found by the linter tool",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "Dockerfile files are compliant with hadolint standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-jenkins_exit_status",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "hadolint",
+                                "lang": "Dockerfile",
+                                "version": "v2.8.0-0-g398770f-dirty",
+                                "docker": {
+                                    "image": "hadolint/hadolint:2.8.0-alpine",
+                                    "reviewed": "2021-06-21"
+                                },
+                                "ci": {
+                                    "name": "QC.Sty github.com/OSTrails/FDP-Index-Proxy hadolint",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "hadolint Dockerfile --failure-threshold error"
+                                    ],
+                                    "stdout_text": "Dockerfile:7 DL3002 \u001b[1m\u001b[93mwarning\u001b[0m: Last USER should not be root\nDockerfile:8 DL3009 \u001b[92minfo\u001b[0m: Delete the apt-get lists after installing something\nDockerfile:9 DL3009 \u001b[92minfo\u001b[0m: Delete the apt-get lists after installing something\nDockerfile:10 DL3008 \u001b[1m\u001b[93mwarning\u001b[0m: Pin versions in apt get install. Instead of `apt-get install <package>` use `apt-get install <package>=<version>`\nDockerfile:10 DL3015 \u001b[92minfo\u001b[0m: Avoid additional packages by specifying `--no-install-recommends`\nDockerfile:10 DL3059 \u001b[92minfo\u001b[0m: Multiple consecutive `RUN` instructions. Consider consolidation.\nDockerfile:15 DL3059 \u001b[92minfo\u001b[0m: Multiple consecutive `RUN` instructions. Consider consolidation.\nDockerfile:18 DL3059 \u001b[92minfo\u001b[0m: Multiple consecutive `RUN` instructions. Consider consolidation.",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/FDP-Index-Proxy.git.assess.sqaaas/job/master/1/execution/node/79/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/FDP-Index-Proxy.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        },
+                        {
+                            "valid": false,
+                            "message": "Ruby files are not fully compliant with rubocop standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-jenkins_exit_status",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "rubocop",
+                                "lang": "Ruby",
+                                "version": "1.36.0",
+                                "docker": {
+                                    "dockerfile": "QC.Sty/rubocop/Dockerfile",
+                                    "reviewed": "2022-10-07"
+                                },
+                                "ci": {
+                                    "name": "QC.Sty github.com/OSTrails/FDP-Index-Proxy rubocop",
+                                    "status": "FAILED",
+                                    "stdout_command": [
+                                        "rubocop"
+                                    ],
+                                    "stdout_text": "Inspecting 15 files\n..WCW..CWW.WCC.\n\nOffenses:\n\nfdp_index_proxy/application/controllers/application_controller.rb:6:18: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.\nrequire_relative './lib/fdp_index_proxy'\n                 ^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/application/controllers/application_controller.rb:6:19: C: [Correctable] Style/RedundantCurrentDirectoryInPath: Remove the redundant current directory path.\nrequire_relative './lib/fdp_index_proxy'\n                  ^^\nfdp_index_proxy/application/controllers/application_controller.rb:13:1: C: Style/Documentation: Missing top-level documentation comment for class ApplicationController.\nclass ApplicationController < Sinatra::Application\n^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/application/controllers/application_controller.rb:20:3: W: Lint/EmptyBlock: Empty block detected.\n  configure do ...\n  ^^^^^^^^^^^^\nfdp_index_proxy/application/controllers/models.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class ErrorModel.\nclass ErrorModel  # Notice, this is just a plain ruby object.\n^^^^^^^^^^^^^^^^\nfdp_index_proxy/application/controllers/models.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.\nclass ErrorModel  # Notice, this is just a plain ruby object.\n^\nfdp_index_proxy/application/controllers/models.rb:1:19: C: [Correctable] Style/CommentedKeyword: Do not place comments on the same line as the class keyword.\nclass ErrorModel  # Notice, this is just a plain ruby object.\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/application/controllers/models.rb:48:121: C: Layout/LineLength: Line is too long. [132/120]\n#       key :description, 'Retrieve the matching VP Resources from an ontology search against the dcat:theme and dcat:themeTaxonomy'\n                                                                                                                        ^^^^^^^^^^^^\nfdp_index_proxy/application/controllers/routes.rb:6:1: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for set_routes is too high. [11/7]\ndef set_routes(classes: allclasses) ...\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/application/controllers/routes.rb:6:1: C: Metrics/PerceivedComplexity: Perceived complexity for set_routes is too high. [10/8]\ndef set_routes(classes: allclasses) ...\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/application/controllers/routes.rb:9:16: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.\n  set :server, 'webrick' \n               ^^^^^^^^^\nfdp_index_proxy/application/controllers/routes.rb:9:25: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.\n  set :server, 'webrick' \n                        ^\nfdp_index_proxy/application/controllers/routes.rb:14:1: C: [Correctable] Layout/EmptyLines: Extra blank line detected.\nfdp_index_proxy/application/controllers/routes.rb:19:1: C: [Correctable] Layout/EmptyLines: Extra blank line detected.\nfdp_index_proxy/application/controllers/routes.rb:30:3: C: Metrics/BlockLength: Block has too many lines. [28/25]\n  get \"/fdp-index-proxy/proxy\" do  # ?url=https://.... ...\n  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/application/controllers/routes.rb:47:12: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.\n      when 'text/turtle'\n           ^^^^^^^^^^^^^\nfdp_index_proxy/application/controllers/routes.rb:50:12: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.\n      when 'application/json'\n           ^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/application/controllers/routes.rb:53:7: W: Lint/DuplicateBranch: Duplicate branch body detected.\n      when 'application/ld+json' ...\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/application/controllers/routes.rb:53:12: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.\n      when 'application/ld+json'\n           ^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/application/controllers/routes.rb:56:7: W: Lint/DuplicateBranch: Duplicate branch body detected.\n      else  # for the FDP index send turtle by default\n      ^^^^\nfdp_index_proxy/application/controllers/routes.rb:61:14: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.\n    error 406 \n             ^\nfdp_index_proxy/application/controllers/routes.rb:69:5: C: [Correctable] Layout/CommentIndentation: Incorrect indentation detected (column 4 instead of 0).\n    # warn json.inspect\n    ^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/application/controllers/routes.rb:70:1: C: [Correctable] Layout/CommentIndentation: Incorrect indentation detected (column 0 instead of 6).\n#    begin\n^^^^^^^^^^\nfdp_index_proxy/application/controllers/routes.rb:71:121: C: Layout/LineLength: Line is too long. [154/120]\n      # curl -v -X POST   https://fdps.ejprd.semlab-leiden.nl/   -H 'content-type: application/json'   -d '{\"clientUrl\": \"https://w3id.org/duchenne-fdp\"}'\n                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/application/controllers/routes.rb:72:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.\n      request_payload = JSON.parse body\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/application/controllers/routes.rb:73:7: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.\n      warn request_payload.inspect\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/application/controllers/routes.rb:81:1: C: [Correctable] Layout/CommentIndentation: Incorrect indentation detected (column 0 instead of 4).\n#    end\n^^^^^^^^\nfdp_index_proxy/application/controllers/routes.rb:88:5: C: [Correctable] Style/IfUnlessModifier: Favor modifier unless usage when having a single-line body. Another good alternative is the usage of control flow &&/||.\n    unless result\n    ^^^^^^\nfdp_index_proxy/application/controllers/routes.rb:94:3: W: Lint/EmptyBlock: Empty block detected.\n  before do ...\n  ^^^^^^^^^\nfdp_index_proxy/lib/cache.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.\nfdp_index_proxy/lib/cache.rb:2:1: C: [Correctable] Layout/LeadingEmptyLines: Unnecessary blank line at the beginning of the source.\ndef thaw_keywords\n^^^\nfdp_index_proxy/lib/cache.rb:34:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.\nend\n   \nfdp_index_proxy/lib/fdp.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.\nfdp_index_proxy/lib/fdp.rb:2:1: C: [Correctable] Layout/LeadingEmptyLines: Unnecessary blank line at the beginning of the source.\nclass FDP\n^^^^^\nfdp_index_proxy/lib/fdp.rb:2:1: C: Metrics/ClassLength: Class has too many lines. [291/100]\nclass FDP ...\n^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:2:1: C: Style/Documentation: Missing top-level documentation comment for class FDP.\nclass FDP\n^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:5:19: C: [Correctable] Style/MutableConstant: Freeze mutable objects assigned to constants.\n  DCATSTRUCTURE = { \"Resource\" => \"http://www.w3.org/ns/dcat#resource\", ...\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:22:24: C: [Correctable] Style/MethodCallWithoutArgsParentheses: Do not use parentheses for method calls with no arguments.\n    iterate_dcat_record()  # this is also a recursive function - iterate over a FDP record or over a normal DCAT record\n                       ^^\nfdp_index_proxy/lib/fdp.rb:28:3: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for load is too high. [10/7]\n  def load(address:) ...\n  ^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:28:3: C: Metrics/PerceivedComplexity: Perceived complexity for load is too high. [10/8]\n  def load(address:) ...\n  ^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:33:39: C: [Correctable] Style/IfUnlessModifier: Modifier form of if makes the line too long.\n      address = \"#{address}?#{@args}\" if @args # try to add the previous query string to stay in the syntax, e.g. ?format=ttl\n                                      ^^\nfdp_index_proxy/lib/fdp.rb:33:39: C: [Correctable] Style/SoleNestedConditional: Consider merging nested conditions into outer unless conditions.\n      address = \"#{address}?#{@args}\" if @args # try to add the previous query string to stay in the syntax, e.g. ?format=ttl\n                                      ^^\nfdp_index_proxy/lib/fdp.rb:33:121: C: Layout/LineLength: Line is too long. [125/120]\n      address = \"#{address}?#{@args}\" if @args # try to add the previous query string to stay in the syntax, e.g. ?format=ttl\n                                                                                                                        ^^^^^\nfdp_index_proxy/lib/fdp.rb:45:50: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.\n    rescue RestClient::ExceptionWithResponse => e \n                                                 ^\nfdp_index_proxy/lib/fdp.rb:46:46: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.\n      puts \"An error occurred: #{e.response}\" \n                                             ^\nfdp_index_proxy/lib/fdp.rb:48:53: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.\n    rescue RestClient::Exception, StandardError => e \n                                                    ^\nfdp_index_proxy/lib/fdp.rb:52:20: W: [Correctable] Lint/RedundantSafeNavigation: Redundant safe navigation detected, use . instead.\n    return unless r&.respond_to? \"body\"  # abort if it isn't going to behave like a successful web call\n                   ^^\nfdp_index_proxy/lib/fdp.rb:62:97: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.\n    # 2. detect dcat predicates and check that the object resolves - ignore triple if it doesn't \n                                                                                                ^\nfdp_index_proxy/lib/fdp.rb:72:5: C: [Correctable] Layout/EmptyLineAfterGuardClause: Add empty line after guard clause.\n    return unless try=~/^http/  # found another page!\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:72:22: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =~.\n    return unless try=~/^http/  # found another page!\n                     ^^\nfdp_index_proxy/lib/fdp.rb:77:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.\nfdp_index_proxy/lib/fdp.rb:78:3: C: [Correctable] Layout/EmptyLineBetweenDefs: Expected 1 empty line between method definitions; found 2.\n  def preparse(message:)\n  ^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:78:3: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for preparse is too high. [8/7]\n  def preparse(message:) ...\n  ^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:89:49: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.\n        if [\"http://www.w3.org/ns/dcat#dataset\", \n                                                ^\nfdp_index_proxy/lib/fdp.rb:90:11: C: [Correctable] Layout/ArrayAlignment: Align the elements of an array literal if they span more than one line.\n          \"http://www.w3.org/ns/dcat#distribution\", \n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:90:52: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.\n          \"http://www.w3.org/ns/dcat#distribution\", \n                                                   ^\nfdp_index_proxy/lib/fdp.rb:91:11: C: [Correctable] Layout/ArrayAlignment: Align the elements of an array literal if they span more than one line.\n          \"http://www.w3.org/ns/dcat#service\", \n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:91:47: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.\n          \"http://www.w3.org/ns/dcat#service\", \n                                              ^\nfdp_index_proxy/lib/fdp.rb:92:11: C: [Correctable] Layout/ArrayAlignment: Align the elements of an array literal if they span more than one line.\n          \"http://www.w3.org/ns/dcat#accessService\"].include?(statement.predicate.to_s)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:93:9: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.\n            next unless testresolution(address: statement.object.to_s)  # filter 404s\n        ^^^^\nfdp_index_proxy/lib/fdp.rb:93:18: C: [Correctable] Style/SoleNestedConditional: Consider merging nested conditions into outer if conditions.\n            next unless testresolution(address: statement.object.to_s)  # filter 404s\n                 ^^^^^^\nfdp_index_proxy/lib/fdp.rb:99:58: W: [Correctable] Lint/RedundantStringCoercion: Redundant use of Object#to_s in interpolation.\n          warn \"FOUND ANOTHER PAGE #{statement.predicate.to_s} #{statement.object.to_s}\"\n                                                         ^^^^\nfdp_index_proxy/lib/fdp.rb:99:83: W: [Correctable] Lint/RedundantStringCoercion: Redundant use of Object#to_s in interpolation.\n          warn \"FOUND ANOTHER PAGE #{statement.predicate.to_s} #{statement.object.to_s}\"\n                                                                                  ^^^^\nfdp_index_proxy/lib/fdp.rb:100:13: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.\n            nextpage = statement.object.to_s.dup\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:101:101: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.\n            # Good lord... the IEPNB has HTML escaped the URLs that appear in their DCAT records.... \n                                                                                                    ^\nfdp_index_proxy/lib/fdp.rb:104:13: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.\n            nextpage.gsub!(/page=/, \"&page=\")\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:104:28: C: [Correctable] Style/RedundantRegexpArgument: Use string \"page=\" as argument instead of regexp /page=/.\n            nextpage.gsub!(/page=/, \"&page=\")\n                           ^^^^^^^\nfdp_index_proxy/lib/fdp.rb:105:13: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.\n            warn \"FIXED PAGE TOOO #{nextpage}\"\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:107:45: C: [Correctable] Style/RegexpLiteral: Use %r around regular expression.\n        next if statement.predicate.to_s =~ /ns\\/hydra/   # don't copy control statements\n                                            ^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:108:42: C: [Correctable] Style/RegexpLiteral: Use %r around regular expression.\n        next if statement.object.to_s =~ /ns\\/hydra/   # don't copy control statements\n                                         ^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:110:124: C: Layout/LineLength: Line is too long. [128/120]\n        # Gobierno has a URL in a distribution (object) that looks like this: <https://doi:10.1016/j.scitotenv.2007.05.038>  :-(\n                                                                                                                           ^^^^^\nfdp_index_proxy/lib/fdp.rb:112:42: C: [Correctable] Style/RegexpLiteral: Use %r around regular expression.\n        next if statement.object.to_s =~ /https?\\:\\/\\/doi\\:/\n                                         ^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:112:49: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal\n        next if statement.object.to_s =~ /https?\\:\\/\\/doi\\:/\n                                                ^^\nfdp_index_proxy/lib/fdp.rb:112:58: C: [Correctable] Style/RedundantRegexpEscape: Redundant escape inside regexp literal\n        next if statement.object.to_s =~ /https?\\:\\/\\/doi\\:/\n                                                         ^^\nfdp_index_proxy/lib/fdp.rb:119:5: C: [Correctable] Style/RedundantReturn: Redundant return detected.\n    return true\n    ^^^^^^\nfdp_index_proxy/lib/fdp.rb:122:1: C: [Correctable] Layout/EmptyLines: Extra blank line detected.\nfdp_index_proxy/lib/fdp.rb:123:3: C: [Correctable] Layout/EmptyLineBetweenDefs: Expected 1 empty line between method definitions; found 2.\n  def iterate_dcat_record\n  ^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:125:121: C: Layout/LineLength: Line is too long. [121/120]\n    @toptype ||= toplevel  # don't reset if set - this contains the top level of the initial URL that started the cascade\n                                                                                                                        ^\nfdp_index_proxy/lib/fdp.rb:134:1: C: [Correctable] Layout/EmptyLines: Extra blank line detected.\nfdp_index_proxy/lib/fdp.rb:135:3: C: [Correctable] Layout/EmptyLineBetweenDefs: Expected 1 empty line between method definitions; found 2.\n  def parse_fdp\n  ^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:162:121: C: Layout/LineLength: Line is too long. [130/120]\n    query = SPARQL.parse(\"SELECT distinct ?type WHERE { ?s a ?type }\")  # this is called for every objecgt type in the DCAT record\n                                                                                                                        ^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:187:121: C: Layout/LineLength: Line is too long. [164/120]\n    subjects = find_subject_uri_query(graph: @graph, type: @toptype)  # type is FDP, Catalog, Dataset, etc. - the highest level of the DCAT hierarchy that was found\n                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:189:121: C: Layout/LineLength: Line is too long. [155/120]\n    _fdp_uri = inject_FDP_root(subject: subjects.first.to_s)  # it doesn't matter which one, because they're all the same tupe (should only be one anyway!)\n                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:212:3: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for inject_contact is too high. [8/7]\n  def inject_contact(subject:, type:) ...\n  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:212:3: C: Metrics/PerceivedComplexity: Perceived complexity for inject_contact is too high. [10/8]\n  def inject_contact(subject:, type:) ...\n  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:215:121: C: Layout/LineLength: Line is too long. [121/120]\n    contactresults = lookup_contact(graph: @graph, resource: subject) # SELECT DISTINCT  ?contact ?url ?email ?name WHERE\n                                                                                                                        ^\nfdp_index_proxy/lib/fdp.rb:232:121: C: [Correctable] Layout/LineLength: Line is too long. [121/120]\n      triplify(\"http://flair.gg.fakenode/contactPoint/#{uuid}\", \"http://www.w3.org/2006/vcard/ns#url\", publisher, @graph)\n                                                                                                                        ^\nfdp_index_proxy/lib/fdp.rb:267:3: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for inject_class_container is too high. [11/7]\n  def inject_class_container(subject:, type:) ...\n  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:267:3: C: Metrics/PerceivedComplexity: Perceived complexity for inject_class_container is too high. [11/8]\n  def inject_class_container(subject:, type:) ...\n  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:275:121: C: Layout/LineLength: Line is too long. [184/120]\n      objecttype, parent = clarify_data_service_parent(graph: @graph, service: subject) # returns DataService1 if it is a catalog service, DataService2 if it is a disgtribution service\n                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:301:7: C: Naming/MethodName: Use snake_case for method names.\n  def inject_FDP_root(subject:)\n      ^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:318:7: C: [Correctable] Layout/CommentIndentation: Incorrect indentation detected (column 6 instead of 4).\n      # make top level object discoverable\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:320:5: C: [Correctable] Layout/ArgumentAlignment: Align the arguments of a method call if they span more than one line.\n    \"https://w3id.org/ejp-rd/vocabulary#VPDiscoverable\", @graph)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:322:1: C: [Correctable] Layout/EmptyLines: Extra blank line detected.\nfdp_index_proxy/lib/fdp.rb:335:56: C: [Correctable] Style/RedundantInterpolation: Prefer to_s over string interpolation.\n    triplify(fdp, \"http://www.w3.org/ns/ldp#contains\", \"#{subject}\", @graph)\n                                                       ^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:349:21: C: Security/MarshalLoad: Avoid using Marshal.load.\n      fdp = Marshal.load(fdpstring)\n                    ^^^^\nfdp_index_proxy/lib/fdp.rb:360:5: C: [Correctable] Style/FileWrite: Use File.write.\n    File.open(\"/tmp/latestproxyoutput.ttl\", 'w') { |file| file.write(@graph.dump(:turtle)) }\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:360:45: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.\n    File.open(\"/tmp/latestproxyoutput.ttl\", 'w') { |file| file.write(@graph.dump(:turtle)) }\n                                            ^^^\nfdp_index_proxy/lib/fdp.rb:370:31: C: [Correctable] Layout/SpaceInsideParens: Space inside parentheses detected.\n  def self.call_fdp_index(url: )\n                              ^\nfdp_index_proxy/lib/fdp.rb:371:121: C: Layout/LineLength: Line is too long. [152/120]\n    # curl -v -X POST   https://fdps.ejprd.semlab-leiden.nl/   -H 'content-type: application/json'   -d '{\"clientUrl\": \"https://w3id.org/duchenne-fdp\"}'\n                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:372:13: C: [Correctable] Style/FetchEnvVar: Use ENV.fetch(\"FDP_INDEX\") or ENV.fetch(\"FDP_INDEX\", nil) instead of ENV[\"FDP_INDEX\"].\n    index = ENV[\"FDP_INDEX\"]\n            ^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:373:14: C: [Correctable] Style/FetchEnvVar: Use ENV.fetch(\"FDP_PROXY_METHOD\") or ENV.fetch(\"FDP_PROXY_METHOD\", nil) instead of ENV[\"FDP_PROXY_METHOD\"].\n    method = ENV[\"FDP_PROXY_METHOD\"]\n             ^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:377:19: C: [Correctable] Style/RegexpLiteral: Use %r around regular expression.\n    address.gsub!(/\\/+$/, \"\") # remove trailing slashs\n                  ^^^^^^\nfdp_index_proxy/lib/fdp.rb:378:15: C: [Correctable] Style/StringConcatenation: Prefer string interpolation to string concatenation.\n    address = method + \"://\" + address + \"/fdp-index-proxy/proxy?url=#{url}\"\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:383:7: W: [Correctable] Lint/UselessAssignment: Useless assignment to variable - r.\n      r = RestClient::Request.execute(\n      ^\nfdp_index_proxy/lib/fdp.rb:387:20: W: [Correctable] Lint/SymbolConversion: Unnecessary symbol conversion; use clientUrl: instead.\n        payload: { \"clientUrl\": address }.to_json,\n                   ^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:390:50: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.\n    rescue RestClient::ExceptionWithResponse => e \n                                                 ^\nfdp_index_proxy/lib/fdp.rb:391:46: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.\n      warn \"An error occurred: #{e.response}\" \n                                             ^\nfdp_index_proxy/lib/fdp.rb:393:53: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.\n    rescue RestClient::Exception, StandardError => e \n                                                    ^\nfdp_index_proxy/lib/fdp.rb:397:9: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.\n    true  \n        ^^\nfdp_index_proxy/lib/fdp.rb:400:1: C: [Correctable] Layout/EmptyLines: Extra blank line detected.\nfdp_index_proxy/lib/fdp.rb:401:3: C: [Correctable] Layout/EmptyLineBetweenDefs: Expected 1 empty line between method definitions; found 2.\n  def testresolution(address:)\n  ^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp.rb:404:7: W: [Correctable] Lint/UselessAssignment: Useless assignment to variable - r.\n      r = RestClient::Request.execute(\n      ^\nfdp_index_proxy/lib/fdp.rb:411:50: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.\n    rescue RestClient::ExceptionWithResponse => e \n                                                 ^\nfdp_index_proxy/lib/fdp.rb:412:46: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.\n      warn \"An error occurred: #{e.response}\" \n                                             ^\nfdp_index_proxy/lib/fdp.rb:414:53: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.\n    rescue RestClient::Exception, StandardError => e \n                                                    ^\nfdp_index_proxy/lib/fdp_index_proxy.rb:8:9: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.\nrequire 'uri'\n        ^^^^^\nfdp_index_proxy/lib/fdp_index_proxy.rb:12:9: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.\nrequire 'require_all'\n        ^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp_index_proxy.rb:18:1: W: [Correctable] Lint/DuplicateRequire: Duplicate require detected.\nrequire \"json\"\n^^^^^^^^^^^^^^\nfdp_index_proxy/lib/fdp_index_proxy.rb:21:1: W: [Correctable] Lint/DuplicateRequire: Duplicate require detected.\nrequire \"require_all\"\n^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/metadata_functions.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.\nTYPEHASH = {\n^\nfdp_index_proxy/lib/metadata_functions.rb:27:12: W: [Correctable] Lint/AssignmentInCondition: Use == if you meant to do a comparison or wrap the expression in parentheses to indicate you meant to assign in a condition.\n  if match = body.match(%r{<script\\s+type=\"application/ld\\+json\">((.|\\n|\\r)*?)</script})\n           ^\nfdp_index_proxy/lib/metadata_functions.rb:98:1: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for ontology_annotations is too high. [14/7]\ndef ontology_annotations(uri:) ...\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/metadata_functions.rb:98:1: C: Metrics/PerceivedComplexity: Perceived complexity for ontology_annotations is too high. [15/8]\ndef ontology_annotations(uri:) ...\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/metadata_functions.rb:105:3: C: Metrics/BlockLength: Block has too many lines. [41/25]\n  urls.each do |uri| ...\n  ^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/metadata_functions.rb:105:17: W: Lint/ShadowingOuterLocalVariable: Shadowing outer local variable - uri.\n  urls.each do |uri|\n                ^^^\nfdp_index_proxy/lib/queries.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.\nNAMESPACES = \"PREFIX ejpold: <http://purl.org/ejp-rd/vocabulary/>\n^\nfdp_index_proxy/lib/queries.rb:116:1: C: Metrics/CyclomaticComplexity: Cyclomatic complexity for triplify is too high. [16/7]\ndef triplify(s, p, o, repo, datatype = nil) ...\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/queries.rb:116:1: C: Metrics/PerceivedComplexity: Perceived complexity for triplify is too high. [19/8]\ndef triplify(s, p, o, repo, datatype = nil) ...\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfdp_index_proxy/lib/queries.rb:116:14: C: Naming/MethodParameterName: Method parameter must be at least 3 characters long.\ndef triplify(s, p, o, repo, datatype = nil)\n             ^\nfdp_index_proxy/lib/queries.rb:116:17: C: Naming/MethodParameterName: Method parameter must be at least 3 characters long.\ndef triplify(s, p, o, repo, datatype = nil)\n                ^\nfdp_index_proxy/lib/queries.rb:116:20: C: Naming/MethodParameterName: Method parameter must be at least 3 characters long.\ndef triplify(s, p, o, repo, datatype = nil)\n                   ^\nfdp_index_proxy/lib/queries.rb:161:24: C: Naming/MethodParameterName: Method parameter must be at least 3 characters long.\ndef self.triplify_this(s, p, o, repo)\n                       ^\nfdp_index_proxy/lib/queries.rb:161:27: C: Naming/MethodParameterName: Method parameter must be at least 3 characters long.\ndef self.triplify_this(s, p, o, repo)\n                          ^\nfdp_index_proxy/lib/queries.rb:161:30: C: Naming/MethodParameterName: Method parameter must be at least 3 characters long.\ndef self.triplify_this(s, p, o, repo)\n                             ^\nfdp_index_proxy/spec/fdp_index_proxy_spec.rb:2:1: C: [Correctable] Layout/EmptyLineAfterMagicComment: Add an empty line after magic comments.\nrequire 'rspec'\n^\nfdp_index_proxy/spec/fdp_index_proxy_spec.rb:2:9: C: [Correctable] Style/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.\nrequire 'rspec'\n        ^^^^^^^\n\n15 files inspected, 137 offenses detected, 94 offenses autocorrectable",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/FDP-Index-Proxy.git.assess.sqaaas/job/master/1/execution/node/88/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/FDP-Index-Proxy.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 0,
+                "total_subcriteria": 1,
+                "success_subcriteria": 0
+            }
+        },
+        "QC.Ver": {
+            "valid": true,
+            "subcriteria": {
+                "QC.Ver01.0": {
+                    "description": "Are tags being used for releasing software",
+                    "requirement_level": "MUST",
+                    "hint": "Git tags are a convenient way to release software. This subcriterion checks if any git tag is present in the code history. More info on it-scm.com/book/en/v2/Git-Basics-Tagging\" target=\"_blank\">git tagging</a>",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "The code repository uses tags for releasing new software versions",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-is_semver",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "get_git_tags.py",
+                                "lang": "Semantic Versioning",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Ver/Dockerfile",
+                                    "reviewed": "2022-05-10"
+                                },
+                                "ci": {
+                                    "name": "QC.Ver github.com/OSTrails/FDP-Index-Proxy get_git_tags.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "get_git_tags.py"
+                                    ],
+                                    "stdout_text": "['v1.0.0']",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/FDP-Index-Proxy.git.assess.sqaaas/job/master/1/execution/node/97/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/FDP-Index-Proxy.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": [
+                                "v1.0.0"
+                            ]
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Ver01": {
+                    "description": "Is the latest release compliant with Semantic Versioning (SemVer) specification?",
+                    "requirement_level": "SHOULD",
+                    "hint": "Latest tag must be compliant with <a href=\"https://semver.org\" target=\"_blank\">SemVer specification</a>",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "Latest release tag v1.0.0 found, but is not SemVer compliant",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-is_semver",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "get_git_tags.py",
+                                "lang": "Semantic Versioning",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Ver/Dockerfile",
+                                    "reviewed": "2022-05-10"
+                                },
+                                "ci": {
+                                    "name": "QC.Ver github.com/OSTrails/FDP-Index-Proxy get_git_tags.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "get_git_tags.py"
+                                    ],
+                                    "stdout_text": "['v1.0.0']",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/FDP-Index-Proxy.git.assess.sqaaas/job/master/1/execution/node/97/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/FDP-Index-Proxy.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": [
+                                "v1.0.0"
+                            ]
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                },
+                "QC.Ver02": {
+                    "description": "Are all release tags with Semantic Versioning (SemVer) specification?",
+                    "requirement_level": "SHOULD",
+                    "hint": "Existent release tags shall be <a href=\"https://semver.org\" target=\"_blank\">SemVer</a> compliant for this subcriterion to be successful",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "Not all release tags are SemVer compliant",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-is_semver",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "get_git_tags.py",
+                                "lang": "Semantic Versioning",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Ver/Dockerfile",
+                                    "reviewed": "2022-05-10"
+                                },
+                                "ci": {
+                                    "name": "QC.Ver github.com/OSTrails/FDP-Index-Proxy get_git_tags.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "get_git_tags.py"
+                                    ],
+                                    "stdout_text": "['v1.0.0']",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/FDP-Index-Proxy.git.assess.sqaaas/job/master/1/execution/node/97/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/FDP-Index-Proxy.git.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": [
+                                "v1.0.0"
+                            ]
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 33,
+                "total_subcriteria": 3,
+                "success_subcriteria": 1
+            }
+        },
+        "QC.Met": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Met01": {
+                    "description": "Is the software citable?",
+                    "valid": false,
+                    "hint": "The two formats for software citation supported by SQAaaS are: 1) <a href=\"https://codemeta.github.io/\" target=\"_blank\">CodeMeta</a> and 2) <a href=\"https://citation-file-format.github.io/\" target=\"_blank\">Citation File Format (CFF)</a>. While CodeMeta provides you with a more comprehensive description, CFF is a more lightweight, good-enough approach to software (with built-in support by GitHub) citation. Both provide tools (<a href=\"https://codemeta.github.io/codemeta-generator/\" target=\"_blank\">CodeMeta generator</a>, <a href=\"https://citation-file-format.github.io/cff-initializer-javascript/#/\" target=\"_blank\">CFFINIT</a>)to easily generate a working citation file. Once having the file, be sure to add it to the root path of your code repo.",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "No matching files found for language <CodeMeta> in repository searching by extensions or filenames\nNo matching files found for language <Citation File Format> in repository searching by extensions or filenames"
+                        }
+                    ],
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 0,
+                "total_subcriteria": 1,
+                "success_subcriteria": 0
+            }
+        },
+        "QC.Sec": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Sec02": {
+                    "description": "Is the source code passing Static Analysis Security Testing (SAST)?",
+                    "valid": false,
+                    "hint": "Please check & solve the security weaknesses found by the SAST tool",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "No matching files found for language <Python> in repository searching by extensions or filenames\nNo matching files found for language <Go> in repository searching by extensions or filenames"
+                        }
+                    ],
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 0,
+                "total_subcriteria": 1,
+                "success_subcriteria": 0
+            }
+        },
+        "QC.Uni": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Uni01": {
+                    "description": "Are the tests passing through an automated means?",
+                    "valid": false,
+                    "hint": "Please check & solve the failing test cases found by the {tool_name} tool",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "No matching files found for language <Python> in repository searching by extensions or filenames"
+                        }
+                    ],
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 0,
+                "total_subcriteria": 1,
+                "success_subcriteria": 0
+            }
+        }
+    },
+    "badge": {
+        "software": {
+            "criteria": {
+                "bronze": {
+                    "to_fulfill": [
+                        "QC.Acc",
+                        "QC.Lic",
+                        "QC.Doc"
+                    ],
+                    "missing": [
+                        "QC.Doc"
+                    ],
+                    "fulfilled": [
+                        "QC.Acc",
+                        "QC.Lic"
+                    ]
+                },
+                "silver": {
+                    "to_fulfill": [
+                        "QC.Lic",
+                        "QC.Doc",
+                        "QC.Acc",
+                        "QC.Ver",
+                        "QC.Met"
+                    ],
+                    "missing": [
+                        "QC.Doc",
+                        "QC.Met"
+                    ],
+                    "fulfilled": [
+                        "QC.Acc",
+                        "QC.Lic",
+                        "QC.Ver"
+                    ]
+                },
+                "gold": {
+                    "to_fulfill": [
+                        "QC.Lic",
+                        "QC.Uni",
+                        "QC.Doc",
+                        "QC.Acc",
+                        "QC.Ver",
+                        "QC.Met",
+                        "QC.Sec",
+                        "QC.Sty"
+                    ],
+                    "missing": [
+                        "QC.Uni",
+                        "QC.Doc",
+                        "QC.Met",
+                        "QC.Sec",
+                        "QC.Sty"
+                    ],
+                    "fulfilled": [
+                        "QC.Acc",
+                        "QC.Lic",
+                        "QC.Ver"
+                    ]
+                }
+            },
+            "data": {}
+        }
+    }
+}
