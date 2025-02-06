@@ -15,42 +15,42 @@ sqa_criteria:
     repos:
       github.com/OSTrails/FDP-Index-Proxy git:
         commands:
-        - /usr/bin/env sh .sqa/script.stuffy-magenta-nightingale.sh
-        container: qc.acc_pasty-turquoise-eel
+        - /usr/bin/env sh .sqa/script.wiggy-black-wildebeest.sh
+        container: qc.acc_wheezy-blue-woodpecker
   QC.Doc:
     repos:
       github.com/OSTrails/FDP-Index-Proxy find_doc_files.py:
         commands:
-        - /usr/bin/env sh .sqa/script.stealthy-cinnabar-duck.sh
-        container: qc.doc_bumpy-celadon-bandicoot
+        - /usr/bin/env sh .sqa/script.skanky-zucchini-pig.sh
+        container: qc.doc_cranky-lemon-wolf
       github.com/OSTrails/FDP-Index-Proxy git:
         commands:
-        - /usr/bin/env sh .sqa/script.flabby-gold-wildebeest.sh
-        container: qc.doc_seedy-cerulean-pig
+        - /usr/bin/env sh .sqa/script.cloudy-magnolia-terrier.sh
+        container: qc.doc_gloppy-pink-bison
       github.com/OSTrails/FDP-Index-Proxy markdownlint:
         commands:
-        - /usr/bin/env sh .sqa/script.thirsty-corn-woodlouse.sh
-        container: qc.doc_ready-alizarin-ant
+        - /usr/bin/env sh .sqa/script.chewy-smalt-fox.sh
+        container: qc.doc_sleazy-goldenrod-jackal
   QC.Lic:
     repos:
       github.com/OSTrails/FDP-Index-Proxy licensee:
         commands:
-        - /usr/bin/env sh .sqa/script.crappy-teal-gerbil.sh
-        container: qc.lic_shaggy-cream-whippet
+        - /usr/bin/env sh .sqa/script.stinky-yellow-wasp.sh
+        container: qc.lic_frumpy-alizarin-macaque
   QC.Sty:
     repos:
       github.com/OSTrails/FDP-Index-Proxy hadolint:
         commands:
-        - /usr/bin/env sh .sqa/script.squeaky-azure-dodo.sh
-        container: qc.sty_greasy-chestnut-wolfhound
+        - /usr/bin/env sh .sqa/script.skanky-brass-rabbit.sh
+        container: qc.sty_boozy-buff-cheetah
       github.com/OSTrails/FDP-Index-Proxy rubocop:
         commands:
-        - /usr/bin/env sh .sqa/script.craggy-puce-cougar.sh
-        container: qc.sty_bluesy-cinnabar-hedgehog
+        - /usr/bin/env sh .sqa/script.flaky-cyan-caracal.sh
+        container: qc.sty_woozy-violet-anteater
   QC.Ver:
     repos:
       github.com/OSTrails/FDP-Index-Proxy get_git_tags.py:
         commands:
-        - /usr/bin/env sh .sqa/script.scaly-mustard-zorse.sh
-        container: qc.ver_shaggy-white-fish
+        - /usr/bin/env sh .sqa/script.leaky-peach-chow.sh
+        container: qc.ver_slimy-chocolate-wallaby
 timeout: 5400
