@@ -1,0 +1,56 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: main
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/OSTrails/FDP-Index-Proxy:
+      branch: master
+      repo: https://github.com/OSTrails/FDP-Index-Proxy.git
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/OSTrails/FDP-Index-Proxy git:
+        commands:
+        - /usr/bin/env sh .sqa/script.stuffy-magenta-nightingale.sh
+        container: qc.acc_pasty-turquoise-eel
+  QC.Doc:
+    repos:
+      github.com/OSTrails/FDP-Index-Proxy find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.stealthy-cinnabar-duck.sh
+        container: qc.doc_bumpy-celadon-bandicoot
+      github.com/OSTrails/FDP-Index-Proxy git:
+        commands:
+        - /usr/bin/env sh .sqa/script.flabby-gold-wildebeest.sh
+        container: qc.doc_seedy-cerulean-pig
+      github.com/OSTrails/FDP-Index-Proxy markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.thirsty-corn-woodlouse.sh
+        container: qc.doc_ready-alizarin-ant
+  QC.Lic:
+    repos:
+      github.com/OSTrails/FDP-Index-Proxy licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.crappy-teal-gerbil.sh
+        container: qc.lic_shaggy-cream-whippet
+  QC.Sty:
+    repos:
+      github.com/OSTrails/FDP-Index-Proxy hadolint:
+        commands:
+        - /usr/bin/env sh .sqa/script.squeaky-azure-dodo.sh
+        container: qc.sty_greasy-chestnut-wolfhound
+      github.com/OSTrails/FDP-Index-Proxy rubocop:
+        commands:
+        - /usr/bin/env sh .sqa/script.craggy-puce-cougar.sh
+        container: qc.sty_bluesy-cinnabar-hedgehog
+  QC.Ver:
+    repos:
+      github.com/OSTrails/FDP-Index-Proxy get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.scaly-mustard-zorse.sh
+        container: qc.ver_shaggy-white-fish
+timeout: 5400
